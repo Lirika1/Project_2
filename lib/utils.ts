@@ -76,7 +76,10 @@ export function formatAmount(amount: number): string {
   return formatter.format(amount);
 }
 
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+export const parseStringify = (value: any) => {
+  if (value === undefined) throw new Error("Cannot stringify undefined");
+  return JSON.parse(JSON.stringify(value));
+}
 
 export const removeSpecialCharacters = (value: string) => {
   return value.replace(/[^\w\s]/gi, "");
@@ -194,7 +197,6 @@ export const getTransactionStatus = (date: Date) => {
 
   return date > twoDaysAgo ? "Processing" : "Success";
 };
-
 
 export const authFormSchema = (type: string) => z.object({
   // sign up

@@ -7,8 +7,9 @@ import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Footer from "./Footer";
+import { PlaidLink } from "react-plaid-link";
 
-const Sidebar = ({ user }: SidebarProps) => {
+const Sidebar = ({ user }: SiderbarProps) => {
   const pathName = usePathname();
   return (
     <section className="sidebar">
@@ -51,7 +52,7 @@ const Sidebar = ({ user }: SidebarProps) => {
             </Link>
           );
         })}
-      USER
+      <PlaidLink user={user}/>
       </nav>
 
 
